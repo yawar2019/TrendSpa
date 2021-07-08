@@ -16,7 +16,7 @@ namespace MVCProfessionals_1july2021.Controllers
 
             return View();
         }
-        [NonAction]
+      
         public string Index5()
         {
             return "MVC10pmBatch";
