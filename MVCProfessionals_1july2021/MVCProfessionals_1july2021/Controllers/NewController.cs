@@ -24,7 +24,7 @@ namespace MVCProfessionals_1july2021.Controllers
 
         private int Index1()
         {
-            return 1211;
+            return 123;
         }
 
         public string Index2()
@@ -110,7 +110,7 @@ namespace MVCProfessionals_1july2021.Controllers
             return View(obj);
         }
 
-        public ActionResult SendEmployeeInfo13()
+        public ViewResult SendEmployeeInfo13(int? id)
         {
             List<EmployeeModel> listObj = new List<EmployeeModel>();
 
@@ -144,6 +144,19 @@ namespace MVCProfessionals_1july2021.Controllers
             return View(listObj);
         }
 
+        public RedirectResult SendEmployeeInfo14()
+        {
+            return Redirect("http://www.google.com");
+        }
+
+        public RedirectResult SendEmployeeInfo16()
+        {
+            return Redirect("~/new/SendEmployeeInfo13?id=1");
+        }
+        //public ViewResult SendEmployeeInfo15()
+        //{
+        //    return Content("hello");
+        //}
     }
 }
 
