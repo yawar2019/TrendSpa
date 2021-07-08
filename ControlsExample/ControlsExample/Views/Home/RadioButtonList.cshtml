@@ -1,0 +1,17 @@
+﻿@model List<ControlsExample.Models.employeeDetail> 
+
+<form action="~/Home/RadioButtonList" method="post">
+
+    @foreach (var item in Model)
+    {
+        @Html.CheckBoxFor(x => item.EmpId, item.EmpId)@item.EmpName<br />
+    }
+    <input type="submit" value="submit" />
+</form>
+
+
+@if (ViewBag.selectedEmployee != null)
+{
+    @ViewBag.selectedEmployee.EmpId<span>-</span>
+    @ViewBag.selectedEmployee.EmpName
+}

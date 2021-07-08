@@ -240,3 +240,11 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/AuthenticationExample/
+/MVC7AMTrickybatch/
+/MVC9pmTigersBatch/
+/MVC8amKings/
+/MVCDareDevils/
+/Spa/
+/TeamJerassicpark/
+/WebApplication2.sln

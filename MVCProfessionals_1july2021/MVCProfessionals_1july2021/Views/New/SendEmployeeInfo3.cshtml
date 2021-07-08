@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "SendEmployeeInfo3";
+}
+
+<h2>SendEmployeeInfo3</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>EmpId</td>
+        <td>EmpName</td>
+        <td>EmpSalary</td>
+    </tr>
+
+    @foreach (var item in ViewBag.emp)
+    {
+        <tr>
+            <td>
+                @item.EmpId
+            </td>
+            <td>
+                @item.EmpName
+            </td>
+            <td>
+                @item.EmpSalary
+            </td>
+        </tr>
+    }
+
+</table>
