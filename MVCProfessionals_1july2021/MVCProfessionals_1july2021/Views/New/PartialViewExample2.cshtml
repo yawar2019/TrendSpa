@@ -1,0 +1,26 @@
+﻿@model List<MVCProfessionals_1july2021.Models.EmployeeModel>
+@{
+    ViewBag.Title = "PartialViewExample2";
+}
+
+<h2>PartialViewExample2</h2>
+
+@{
+
+    var result = Html.Partial("_EmployeePartialView", Model);
+    int a = 9;
+    if (a == 9)
+    {
+        @result;
+    }
+    else
+    {
+        <h1>Thumbs Up For You</h1>
+    }
+
+}
+<br />
+
+@{
+     Html.RenderPartial("_EmployeePartialView", Model);
+}

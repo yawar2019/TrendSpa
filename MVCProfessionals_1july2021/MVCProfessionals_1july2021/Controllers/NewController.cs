@@ -153,12 +153,44 @@ namespace MVCProfessionals_1july2021.Controllers
         {
             return Redirect("~/new/SendEmployeeInfo13?id=1");
         }
-        //public ViewResult SendEmployeeInfo15()
-        //{
-        //    return Content("hello");
-        //}
+        public ViewResult PartialViewExample()
+        {
+               return View();
+        }
+        public ViewResult PartialViewExample2()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Amith";
+            obj.EmpSalary = 670000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Umesh";
+            obj1.EmpSalary = 770000;
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "vrushali";
+            obj2.EmpSalary = 670000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Renuka";
+            obj3.EmpSalary = 870000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+
+
+
+            return View(listObj);
+        }
     }
 }
 
-//1)clear
-//2)clear
+ 
