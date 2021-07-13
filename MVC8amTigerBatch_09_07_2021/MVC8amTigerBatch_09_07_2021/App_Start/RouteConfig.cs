@@ -13,6 +13,14 @@ namespace MVC8amTigerBatch_09_07_2021
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "Default1",
+                url: "PistaHouse/bakery",
+                defaults: new { controller = "New", action = "GetName", id = UrlParameter.Optional }
+            );
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

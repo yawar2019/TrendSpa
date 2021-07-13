@@ -190,6 +190,105 @@ namespace MVCProfessionals_1july2021.Controllers
 
             return View(listObj);
         }
+
+        public PartialViewResult PartialViewExample3()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Amith";
+            obj.EmpSalary = 670000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Umesh";
+            obj1.EmpSalary = 770000;
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "vrushali";
+            obj2.EmpSalary = 670000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Renuka";
+            obj3.EmpSalary = 870000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+
+
+
+            return PartialView("_EmployeePartialView", listObj);
+        }
+
+        public JsonResult getmeJsonData()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Amith";
+            obj.EmpSalary = 670000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Umesh";
+            obj1.EmpSalary = 770000;
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "vrushali";
+            obj2.EmpSalary = 670000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Renuka";
+            obj3.EmpSalary = 870000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+
+            return Json(listObj,JsonRequestBehavior.AllowGet);
+        }
+
+        public FileResult GetFile()
+        {
+            return File("~/Web.config","text/plain");
+        }
+        public FileResult GetFile2()
+        {
+            return File("~/ActionResult.pdf", "application/pdf");
+        }
+
+        public FileResult GetFile3()
+        {
+            return File("~/Web.config", "application/xml", "Web.config");
+        }
+
+        public ContentResult getmeContent(int? id)
+        {
+            if (id == 1)
+            {
+
+                return Content("Hello");
+            }
+            else if(id==2)
+            {
+                return Content("<p style=color:red>Hello</p>");
+            }
+            else
+            {
+                return Content("<script>alert('Hello World')</script>");
+            }
+        }
+
+
     }
 }
 
