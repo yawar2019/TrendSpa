@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MVCProfessionals_1july2021
+namespace AdoNetExample
 {
     public class RouteConfig
     {
@@ -14,15 +14,9 @@ namespace MVCProfessionals_1july2021
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "Default1",
-               url: "PistaHouse/Pizza",
-               defaults: new { controller = "New", action = "getmeJsonData", id = UrlParameter.Optional }
-           );
-
-            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index" ,id=UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

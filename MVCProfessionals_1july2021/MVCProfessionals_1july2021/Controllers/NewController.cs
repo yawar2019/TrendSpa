@@ -288,6 +288,46 @@ namespace MVCProfessionals_1july2021.Controllers
             }
         }
 
+        public RedirectToRouteResult getmetoActionMethod()
+        {
+            return RedirectToRoute("Default1");
+        }
+
+        public RedirectToRouteResult getmetoActionMethod2()
+        {
+            return RedirectToAction("Index2","Default",new { id=123});
+        }
+        public RedirectToRouteResult getmetoActionMethod3()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Amith";
+            obj.EmpSalary = 670000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Umesh";
+            obj1.EmpSalary = 770000;
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "vrushali";
+            obj2.EmpSalary = 670000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Renuka";
+            obj3.EmpSalary = 870000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+
+            return RedirectToAction("Index2", "Default",listObj);
+        }
 
     }
 }

@@ -1,10 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "SendData1";
+    var emp = ViewBag.info;
 }
 
 <h2>SendData1</h2>
 
-@ViewBag.info.EmpId<br />
-@ViewBag.info.EmpName<br />
-@ViewBag.info.EmpSalary<br />
+@emp.EmpId<br />
+@emp.EmpName<br />
+@emp.EmpSalary<br />
