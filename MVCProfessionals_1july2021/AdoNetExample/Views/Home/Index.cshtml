@@ -1,10 +1,13 @@
-﻿@model List<AdoNetExample.Models.EmployeeModel>
+﻿@model IPagedList<AdoNetExample.Models.EmployeeModel>
 @{
     ViewBag.Title = "Index";
 }
 
+@using PagedList.Mvc;
+@using PagedList;
 <h2>Index</h2>
 
+<a href="@Url.Action("Create","Home")" class="btn btn-primary">Create</a>
 
 <table class="table table-bordered table-striped">
     <tr>
@@ -21,3 +24,5 @@
         </tr>
     }
 </table>
+
+@Html.PagedListPager(Model,i=>Url.Action("Index","Home",new {i}))
