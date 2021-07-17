@@ -27,9 +27,60 @@ namespace AdoNetExample.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string EmpName1,int?EmpSalary)
+        public ActionResult Create(EmployeeModel emp)
         {
-            return View();
+            int i=db.SaveEmployee(emp);
+            if (i > 0)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            EmployeeModel Emp = db.GetEmployeeDetailsById(id);
+            return View(Emp);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EmployeeModel emp)
+        {
+            int i = db.UpdateEmployee(emp);
+            if (i > 0)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            EmployeeModel Emp = db.GetEmployeeDetailsById(id);
+            return View(Emp);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            int i = db.DeleteEmployee(id);
+            if (i > 0)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

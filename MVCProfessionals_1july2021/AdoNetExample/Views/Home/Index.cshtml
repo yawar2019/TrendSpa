@@ -21,6 +21,10 @@
             <td>@item.EmpId</td>
             <td>@item.EmpName</td>
             <td>@item.EmpSalary</td>
+            <td>
+                <a href="@Url.Action("Edit","Home",new { id = @item.EmpId })" class="btn btn-primary">Edit</a>
+                <a href="@Url.Action("Delete","Home",new { id = @item.EmpId })" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
     }
 </table>
