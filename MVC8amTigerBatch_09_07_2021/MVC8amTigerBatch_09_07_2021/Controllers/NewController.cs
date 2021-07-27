@@ -26,9 +26,9 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
             return "Vinod";
         }
 
-        public ActionResult GetMeView()
+        public ViewResult GetMeView()
         {
-            return View();
+            return View("");
         }
 
 
@@ -104,7 +104,7 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
             return View(obj);
         }
 
-        public ActionResult SendData4()
+        public ViewResult SendData4()
         {
             List<EmployeeModel> listObj = new List<EmployeeModel>();
 
@@ -154,5 +154,172 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
             return View(empDeptObj);
         }
 
+        public RedirectResult GoToGoogle()
+        {
+            return Redirect("http://www.google.com");
+
+        }
+
+        public RedirectResult GoToEmployeeDepartment()
+        {
+            return Redirect("~/new/SendData4");
+        }
+
+        public ActionResult PartialViewExample()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Teja";
+            obj.EmpSalary = 12000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Rajesh";
+            obj1.EmpSalary = 22000;
+
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "Narendra Bahubali";
+            obj2.EmpSalary = 24000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Manas";
+            obj3.EmpSalary = 26000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+            return View(listObj);
+        }
+        public PartialViewResult PartialViewExample2()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Teja";
+            obj.EmpSalary = 12000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Rajesh";
+            obj1.EmpSalary = 22000;
+
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "Narendra Bahubali";
+            obj2.EmpSalary = 24000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Manas";
+            obj3.EmpSalary = 26000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+            return PartialView("_MyPartialView", listObj);
+        }
+
+        public JsonResult getjsonData()
+        {
+            List<EmployeeModel> listObj = new List<EmployeeModel>();
+
+            EmployeeModel obj = new EmployeeModel();
+            obj.EmpId = 1211;
+            obj.EmpName = "Teja";
+            obj.EmpSalary = 12000;
+
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Rajesh";
+            obj1.EmpSalary = 22000;
+
+
+            EmployeeModel obj2 = new EmployeeModel();
+            obj2.EmpId = 1213;
+            obj2.EmpName = "Narendra Bahubali";
+            obj2.EmpSalary = 24000;
+
+            EmployeeModel obj3 = new EmployeeModel();
+            obj3.EmpId = 1214;
+            obj3.EmpName = "Manas";
+            obj3.EmpSalary = 26000;
+
+            listObj.Add(obj);
+            listObj.Add(obj1);
+            listObj.Add(obj2);
+            listObj.Add(obj3);
+
+            return Json(listObj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ViewResult TestJson()
+        {
+            return View();
+        }
+
+        public FileResult GetFile()
+        {
+            return File("~/Web.config","text/plain");
+        }
+        public FileResult GetFile1()
+        {
+            return File("~/ActionResult.pdf", "application/pdf");
+        }
+        public FileResult GetFile2()
+        {
+            return File("~/ActionResult.pdf", "application/pdf", "ActionResultKayka.pdf");
+        }
+
+        public ContentResult GetContent(int? id)
+        {
+            if (id == 1)
+            {
+                return Content("hello");
+            }
+            if (id == 2)
+            {
+                return Content("<p style=color:gray>hello</p>");
+            }
+            if (id == 3)
+            {
+                return Content("<script>alert('hello')</script>");
+            }
+            else
+            {
+                return Content("Done");
+
+            }
+        }
+
+        public RedirectToRouteResult MoveTOOtherAction()
+        {
+            return RedirectToRoute("Default1");
+        }
+        public RedirectToRouteResult MoveTOOtherAction1()
+        {
+            return RedirectToAction("Index", "Default",new {id=1});
+        }
+        public RedirectToRouteResult MoveTOOtherAction2()
+        {
+            EmployeeModel obj1 = new EmployeeModel();
+            obj1.EmpId = 1212;
+            obj1.EmpName = "Rajesh";
+            obj1.EmpSalary = 22000;
+
+            return RedirectToAction("Index", "Default", obj1);
+        }
+        public ActionResult TestView()
+        {
+            return View();
+        }
     }
 }

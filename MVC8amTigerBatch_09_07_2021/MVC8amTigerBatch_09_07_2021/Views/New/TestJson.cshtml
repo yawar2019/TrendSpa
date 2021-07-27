@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "TestJson";
+}
+
+<h2>TestJson</h2>
+
+<table id="table-1">
+    <thead>
+        <tr>
+            <th>
+                Employee Id
+            </th>
+            <th>
+                EmployeeName
+            </th>
+            <th>
+                EmployeeSalary
+            </th>
+        </tr>
+    </thead>
+</table>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+        onload = function showdata() {
+            $.ajax({
+                url: "http://localhost:56255/New/getjsonData",
+                type: "Get",
+                datatype: "json",
+                success: function (result) {
+                    alert(result);
+                    $.each(result, function (i, key) {
+
+                        $("#table-1 tr:last").after('<tr><td>' + key.EmpId + '</td><td>' + key.EmpName + '</td><td>' + key.EmpSalary + '</td></tr>');
+                    });
+                }
+            });
+        }
+    </script>
