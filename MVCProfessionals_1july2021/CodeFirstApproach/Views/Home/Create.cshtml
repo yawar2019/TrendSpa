@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+ @using (Html.BeginForm())
+ {
+    <label>EmpName</label>
+    @Html.TextBox("EmpName",null,new { @class = "form-control" })<br />
+    <label>EmpSalary</label>
+    @Html.TextBox("EmpSalary", null, new { @class = "form-control" })<br />
+    <input type="submit"  value="Save" class="btn btn-success" />
+ }
+
+
+@*@using (Html.BeginForm())
+{ }*@   

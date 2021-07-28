@@ -7,21 +7,26 @@
 @using PagedList.Mvc
 <h2>Index</h2>
 
-    <div class="panel panel-heading">
+<div class="panel panel-heading">
     <table class="table table-bordered table-striped">
         <tr>
             <th>EmpId</th>
             <th>EmpName</th>
             <th>EmpSalary</th>
+            <th>Action</th>
         </tr>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.EmpId</td>
-            <td>@item.EmpName</td>
-            <td>@item.EmpSalary</td>
-        </tr>
+            <tr>
+                <td>@item.EmpId</td>
+                <td>@item.EmpName</td>
+                <td>@item.EmpSalary</td>
+                <td>
+                    <a href="@Url.Action("Edit","Home",new {id=item.EmpId})" class="btn btn-success">Edit</a>|
+                    <a href="@Url.Action("Delete","Home",new {id=item.EmpId})" class="btn btn-warning">Delete</a>|
+                </td>
+            </tr>
         }
     </table>
-        @Html.PagedListPager(Model,PageNumber=>Url.Action("Index","Home",new {PageNumber}))
+    @Html.PagedListPager(Model, PageNumber => Url.Action("Index", "Home", new { PageNumber }))
 </div>

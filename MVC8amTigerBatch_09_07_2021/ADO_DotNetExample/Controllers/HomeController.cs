@@ -24,9 +24,38 @@ namespace ADO_DotNetExample.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(string EmpName,int EmpSalary)
+        public ActionResult Create(EmployeeModel emp)
         {
-            return View();
+            int i = db.SaveEmployee(emp);
+            if (i > 0)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            EmployeeModel emp = db.getEmployeeById(id);
+            return View(emp);
+        }
+        [HttpPost]
+        public ActionResult Edit(EmployeeModel emp)
+        {
+            int i = db.UpdateEmployee(emp);
+            if (i > 0)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

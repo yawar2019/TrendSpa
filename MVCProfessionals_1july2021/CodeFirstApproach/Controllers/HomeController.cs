@@ -15,5 +15,25 @@ namespace CodeFirstApproach.Controllers
         {
             return View(db.EmployeeModels.ToList());
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(EmployeeModel emp)
+        {
+            db.EmployeeModels.Add(emp);//insert query
+            int i = db.SaveChanges();//ExecuteNonQuery
+            if (i > 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
