@@ -75,5 +75,18 @@ namespace ADO_DotNetExample.Models
             con.Close();
             return i;
         }
+
+        
+
+         public int RemoveById(int? RemoveById)
+        {
+            SqlCommand cmd = new SqlCommand("usp_DeleteEmployeeById", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.AddWithValue("@Empid", RemoveById);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            return i;
+        }
     }
 }

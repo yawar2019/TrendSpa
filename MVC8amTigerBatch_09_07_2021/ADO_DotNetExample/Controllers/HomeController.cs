@@ -57,5 +57,27 @@ namespace ADO_DotNetExample.Controllers
                 return View();
             }
         }
+
+        public ActionResult Delete(int? id)
+        {
+            EmployeeModel emp = db.getEmployeeById(id);
+            return View(emp);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            int result = db.RemoveById(id);
+
+            if (result > 0)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
