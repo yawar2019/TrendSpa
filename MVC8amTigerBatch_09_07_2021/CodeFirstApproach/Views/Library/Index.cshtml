@@ -1,0 +1,30 @@
+﻿@model List<CodeFirstApproach.Models.LibraryModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>Book Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BookId</td>
+            <td>@item.BookName</td>
+            <td>@item.Price</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = @item.BookId })|
+                @Html.ActionLink("Delete","Delete",new {id=@item.BookId })
+
+            </td>
+        </tr>
+    }
+</table>

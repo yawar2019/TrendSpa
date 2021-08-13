@@ -1,0 +1,15 @@
+﻿@model CodeFirstApproach.Models.LibraryModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@Model.BookId<br />
+@Model.BookName<br />
+@Model.Price<br />
+
+<form action="~/Library/Delete/@Model.BookId" method="post">
+    <input type="submit" value="Delete" />
+</form>

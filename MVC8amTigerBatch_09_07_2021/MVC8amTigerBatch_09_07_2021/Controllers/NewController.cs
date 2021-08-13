@@ -321,5 +321,14 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
         {
             return View();
         }
+
+        public ActionResult HtmlHelperExample()
+        {
+            VTSRMDBEntities db = new VTSRMDBEntities();
+            EmployeeModel em = new EmployeeModel();
+            em.EmpName = "SagaRika";
+            ViewBag.Books = new SelectList(db.LibraryModels.ToList(), "BookId", "BookName");
+            return View(em);
+        }
     }
 }

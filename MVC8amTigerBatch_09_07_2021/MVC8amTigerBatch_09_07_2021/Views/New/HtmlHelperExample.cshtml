@@ -1,0 +1,28 @@
+﻿@model MVC8amTigerBatch_09_07_2021.Models.EmployeeModel
+@{
+    ViewBag.Title = "HtmlHelperExample";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<script>
+    function fun()
+    {
+        alert("Hello World");
+    }
+</script>
+
+<h2>HtmlHelperExample</h2>
+
+<input type="text" id="lname" name="name" value="Sanjay" style="background-color:deepskyblue" onclick="fun()" /><br />
+@Html.TextBox("EmpName","sarika",new { style = "background-color:Orange",id="EmpId", onclick = "fun()" })
+@Html.TextBoxFor(c=>c.EmpName, new { style = "background-color:Orange", id = "EmpName", onclick = "fun()" })
+
+@Html.DropDownList("Country",new List<SelectListItem>()
+{
+    new SelectListItem {Text="India",Value="1" },
+    new SelectListItem {Text="Bangladesh",Value="2" },
+    new SelectListItem {Text="China",Value="3",Selected=true}
+},"Select Country")<br />
+
+
+@Html.DropDownList("Books")

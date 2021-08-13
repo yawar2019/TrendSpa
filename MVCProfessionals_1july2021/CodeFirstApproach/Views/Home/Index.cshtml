@@ -6,11 +6,14 @@
 <h2>Index</h2>
 
 
-<table>
+<table class="table table-bordered table-condensed">
     <tr>
         <th>EmpId</th>
         <th>EmpName</th>
         <th>EmpSalary</th>
+        <th colspan="2">
+            Action
+        </th>
     </tr>
     @foreach (var item in Model)
     {
@@ -18,6 +21,10 @@
             <td>@item.EmpId</td>
             <td>@item.EmpName</td>
             <td>@item.EmpSalary</td>
+            <td>
+               <a href="@Url.Action("Edit", "Home", new { id = @item.EmpId })" class="btn btn-success">Edit</a>
+               <a href="@Url.Action("Delete", "Home", new { id = @item.EmpId })" class="btn btn-warning">Delete</a>
+            </td>
         </tr>
     }
 </table>
