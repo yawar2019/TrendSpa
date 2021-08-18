@@ -327,8 +327,31 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
             VTSRMDBEntities db = new VTSRMDBEntities();
             EmployeeModel em = new EmployeeModel();
             em.EmpName = "SagaRika";
+            ViewData["asfas"] = "asdfa";
             ViewBag.Books = new SelectList(db.LibraryModels.ToList(), "BookId", "BookName");
             return View(em);
+        }
+
+
+        public ActionResult ViewBagExample()
+        {
+            ViewBag.test1 = 1;
+            ViewData["test2"] = 123;
+            TempData["test3"] = 456;
+            return RedirectToAction("ViewBagExample2");
+        }
+        public ActionResult ViewBagExample2()
+        {
+          var t1=  ViewBag.test1;
+          var t2=  ViewData["test2"];
+            //var t3=  TempData["test3"] ;
+            var t3 = TempData.Peek("test3");
+
+            //TempData.Keep();
+            ViewBag.t4 = t1;
+          ViewBag.t5 = t2;
+          ViewBag.t6 = t3;
+            return View();
         }
     }
 }

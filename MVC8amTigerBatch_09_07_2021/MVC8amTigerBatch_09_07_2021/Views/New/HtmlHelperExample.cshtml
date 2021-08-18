@@ -3,7 +3,7 @@
     ViewBag.Title = "HtmlHelperExample";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
-
+@using MVC8amTigerBatch_09_07_2021.UserControl
 <script>
     function fun()
     {
@@ -26,3 +26,25 @@
 
 
 @Html.DropDownList("Books")
+
+@MyControl.MyLabel("I accept Agreement","blue")<br />
+@MyControl.MyLabel("I accept Agreement", "Orange")
+
+@Html.createUrControl("text")      <br />
+@Html.createUrControl("number")    <br>
+@Html.createUrControl("date")      <br>
+@Html.createUrControl("checkbox")   <br>
+@Html.createUrControl("file")<br>
+
+
+
+
+@myhtmlhelper.MyLabel("pratiusha")
+@Html.createUrControl("file")
+
+
+@helper labelbyrazzorcode(string content)
+{
+    <label>@content</label>
+}
+@labelbyrazzorcode("jakas")

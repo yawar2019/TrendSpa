@@ -15,6 +15,11 @@ namespace ModelFirstApproach.Controllers
         private EmployeeModelContainer db = new EmployeeModelContainer();
 
         // GET: EmployeeModels
+        public ActionResult Index1()
+        {
+            return View(db.EmployeeModels.ToList());
+        }
+
         public ActionResult Index()
         {
             return View(db.EmployeeModels.ToList());
