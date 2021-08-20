@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ModelFirstApproach.Filter;
+using System.Web.Security;
+
 namespace ModelFirstApproach.Controllers
 {
 
@@ -19,7 +21,7 @@ namespace ModelFirstApproach.Controllers
             ViewBag.Player = "Dhoni";
             return View();
         }
-       
+
         public ActionResult About()
         {
             return View();
@@ -38,5 +40,35 @@ namespace ModelFirstApproach.Controllers
             ViewBag.Employees = new SelectList(db.EmployeeModels.ToList(), "EmpId", "EmpName");
             return View(emp);
         }
+
+        public ActionResult login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult login(UserDetail user)
+        {
+            EmployeeEntities db = new EmployeeEntities();
+            UserDetail Reguser = db.UserDetails.Where(s => s.UserName == user.UserName && s.Password == user.Password).SingleOrDefault();
+
+            if (Reguser != null)
+            {
+                FormsAuthentication.SetAuthCookie(Reguser.UserName, false);
+                return Redirect("~/home/Dashboard");
+            }                                 
+
+            return View();
+        }
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("~/home/login");
+        }
+        
     }
 }

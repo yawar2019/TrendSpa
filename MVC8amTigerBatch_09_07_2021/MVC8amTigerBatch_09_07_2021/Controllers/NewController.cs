@@ -353,5 +353,10 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
           ViewBag.t6 = t3;
             return View();
         }
+
+        public ActionResult ValidationExample()
+        {
+            return View();
+        }
     }
 }
