@@ -22,15 +22,32 @@ namespace ModelFirstApproach.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = "Admin")]
         public ActionResult About()
         {
             return View();
         }
 
+
+        [Authorize(Roles = "Manager")]
         public ActionResult ContactUS()
         {
             return View();
         }
+
+        [Authorize(Roles = "Admin,Manager")]
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("~/home/login");
+        }
+
+
 
         public ActionResult HtmlHelperExample()
         {
@@ -59,16 +76,7 @@ namespace ModelFirstApproach.Controllers
 
             return View();
         }
-        [Authorize]
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect("~/home/login");
-        }
+       
         
     }
 }

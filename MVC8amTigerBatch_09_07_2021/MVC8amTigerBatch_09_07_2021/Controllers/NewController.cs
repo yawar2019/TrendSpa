@@ -331,6 +331,18 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
             ViewBag.Books = new SelectList(db.LibraryModels.ToList(), "BookId", "BookName");
             return View(em);
         }
+        //[HttpPost]
+        //public ActionResult HtmlHelperExample(int countryId)
+        //{
+        //    VTSRMDBEntities db = new VTSRMDBEntities();
+        //    ViewBag.Books = new SelectList(db.LibraryModels.ToList(), "BookId", "BookName");
+        //    List<LibraryModel> States =db.stateModel.Where(s=>s.countryId== countryId).SingleOrDefault();
+        //    ViewBag.states = new SelectList(States, "stateid", "statename");
+
+        //    ViewBag.Result = Result.BookName + "," + Result.BookId;
+        //    return View();
+        //}
+        //stateid statename countryId
 
 
         public ActionResult ViewBagExample()
@@ -356,6 +368,20 @@ namespace MVC8amTigerBatch_09_07_2021.Controllers
 
         public ActionResult ValidationExample()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ValidationExample(RegisterationModel reg)
+        {
+            if(ModelState.IsValid)
+            {
+
+            }
+            else
+            {
+
+            }
             return View();
         }
     }
