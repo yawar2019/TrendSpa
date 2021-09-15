@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DatabaseFirstApproachEx.Models;
+using DatabaseFirstApproachEx.ServiceReference2;
 
 namespace DatabaseFirstApproachEx.Controllers
 {
@@ -18,6 +19,10 @@ namespace DatabaseFirstApproachEx.Controllers
         public ActionResult Index()
         {
             return View(db.employeeDetails.ToList());
+        }
+        public ActionResult Index2()
+        {
+            return View(db.sp_employee().ToList());
         }
 
         // GET: employeeDetails/Details/5
@@ -50,8 +55,9 @@ namespace DatabaseFirstApproachEx.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.employeeDetails.Add(employeeDetail);
-                db.SaveChanges();
+                //db.employeeDetails.Add(employeeDetail);
+                //db.SaveChanges();
+                db.spr_insertEmployee(employeeDetail.EmpName, employeeDetail.EmpSalary);
                 return RedirectToAction("Index");
             }
 
@@ -122,6 +128,17 @@ namespace DatabaseFirstApproachEx.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult GetWCFServiceExampleHttp()
+        {
+            CalculatorServiceClient obj = new CalculatorServiceClient("WSHttpBinding_ICalculatorService");
+            return Content(obj.Add(12,15).ToString());
+        }
+        public ActionResult GetWCFServiceExampleTCP()
+        {
+            CalculatorServiceClient obj = new CalculatorServiceClient("NetTcpBinding_ICalculatorService");
+            return Content(obj.Add(12, 15).ToString());
         }
     }
 }
